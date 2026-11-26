@@ -8,3 +8,6 @@ outputs/features_mitdb.csv
 __pycache__/
 *.pyc
 .venv/
+
+# HTML intermediate used to typeset the code documentation
+outputs/_readme.html
