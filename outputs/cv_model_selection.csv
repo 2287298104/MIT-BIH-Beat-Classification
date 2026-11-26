@@ -1,0 +1,4 @@
+model,cv_macro_f1_mean,cv_macro_f1_std
+RF(min_samples_leaf=1),0.8908,0.0062
+RF(min_samples_leaf=2),0.905,0.0131
+RF(min_samples_leaf=4),0.9073,0.0123
