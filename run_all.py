@@ -15,7 +15,7 @@ ROOT = Path(__file__).resolve().parent
 SRC = ROOT / "src"
 
 STEPS = [
-    ("build_dataset.py", "Building beat-level feature table from 48 records"),
+    ("build_dataset.py", "Building beat-level feature table from 42 records"),
     ("train_eval.py", "Training classifiers and evaluating on DS2"),
     ("make_figures.py", "Rendering report figures"),
 ]

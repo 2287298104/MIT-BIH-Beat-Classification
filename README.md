@@ -21,7 +21,7 @@ ectopic beats, and where do its errors come from?
 | stage | result |
 |---|---|
 | R-peak detection (42 records, 97,075 annotated beats) | Se **99.26 %**, PPV **99.73 %** (pooled) |
-| Beat classification (DS2, 45,791 beats from 22 unseen patients) | accuracy **93.04 %**, weighted F1 **0.919**, **V-F1 0.906**, N-F1 0.963 |
+| Beat classification (DS2, 45,791 beats from 20 unseen patients) | accuracy **93.04 %**, weighted F1 **0.919**, **V-F1 0.906**, N-F1 0.963 |
 | rare classes | S-F1 0.143, F-F1 0.014 |
 | same model, beat-level CV inside DS1 | macro-F1 **0.907** vs **0.507** inter-patient |
 
@@ -93,7 +93,7 @@ Runtime on a laptop CPU: about 1 minute for the dataset, 7 s for the random fore
 * 42 of the 48 MIT-BIH records are analysed. Records 102, 104, 107 and 217 are
   excluded (paced rhythms, outside the AAMI class set); 113 and 121 are not part of
   the published DS1/DS2 split that the project follows.
-* **DS1** (22 records) for training, **DS2** (22 disjoint records) for testing. No
+* **DS1** (22 records) for training, **DS2** (20 disjoint records) for testing. No
   patient appears in both sets.
 * Lead MLII when present, otherwise the first available lead.
 

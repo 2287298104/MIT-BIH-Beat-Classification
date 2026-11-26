@@ -1,4 +1,4 @@
-"""Download the MIT-BIH Arrhythmia Database (48 records, ~100 MB) from PhysioNet.
+"""Download the analysed MIT-BIH records (42 of the 48, ~90 MB) from PhysioNet.
 
 Usage
     python src/download_data.py

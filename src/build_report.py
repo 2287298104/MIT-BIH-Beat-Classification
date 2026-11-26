@@ -25,7 +25,7 @@ from docx.shared import Cm, Pt, RGBColor
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from config import CLASSES, FIG_DIR, OUT_DIR, PROJECT_ROOT
+from config import CLASSES, DS1, DS2, FIG_DIR, OUT_DIR, PROJECT_ROOT
 
 BODY_FONT = "Times New Roman"
 REPORT_PATH = PROJECT_ROOT / "report" / "Course_Project_Report.docx"
@@ -246,6 +246,7 @@ def build() -> None:
     n_train, n_test = summary["n_train"], summary["n_test"]
     tr, te = summary["train_dist"], summary["test_dist"]
     n_rec = len(det)
+    n_ds1, n_ds2 = len(DS1), len(DS2)
     n_ann = int(det["n_ann_beats"].sum())
     n_lab = int(det["n_labelled_beats"].sum())
 
@@ -280,8 +281,8 @@ def build() -> None:
         "a Pan-Tompkins detector localises every R peak, each beat is cut into a "
         "252-sample window (-250 ms to +450 ms), 40 hand-crafted descriptors are "
         "extracted from morphology, rhythm, spectrum and wavelet sub-bands, and three "
-        "classifiers are trained on 22 records (DS1) and tested on the 22 disjoint "
-        "records of DS2 using the AAMI EC57 super-class taxonomy."
+        f"classifiers are trained on {n_ds1} records (DS1) and tested on the {n_ds2} "
+        "disjoint records of DS2 using the AAMI EC57 super-class taxonomy."
     ))
     body(doc, (
         f"On the {n_ann:,} annotated beats of the {n_rec} analysed records the "
@@ -390,8 +391,8 @@ def build() -> None:
         "A random beat-level split would place beats of the same patient in training "
         "and test and would inflate every score, because a patient's QRS morphology "
         "repeats almost identically from beat to beat. The inter-patient split of de "
-        "Chazal et al. (2004) is therefore used: 22 records for training (DS1) and 22 "
-        "disjoint records for testing (DS2). The distribution is strongly imbalanced "
+        f"Chazal et al. (2004) is therefore used: {n_ds1} records for training (DS1) "
+        f"and {n_ds2} disjoint records for testing (DS2). The distribution is strongly imbalanced "
         "(Table 2, Figure 1): normal beats are "
         f"{tr['N'] / n_train * 100:.1f}% of the training set, ventricular ectopic "
         f"beats {tr['V'] / n_train * 100:.1f}%, supraventricular "
@@ -602,7 +603,7 @@ def build() -> None:
 
     doc.add_heading("4.2 Model comparison", level=2)
     body(doc, (
-        f"Table 6 compares the three classifiers on DS2 ({n_test:,} beats from 22 "
+        f"Table 6 compares the three classifiers on DS2 ({n_test:,} beats from {n_ds2} "
         f"patients never seen during training). {PRETTY[best_name]} is best on every "
         f"aggregate metric: accuracy {best['accuracy'] * 100:.2f}%, weighted F1 "
         f"{best['weighted_f1']:.4f}, macro-F1 {best['macro_f1']:.4f} and ventricular "
