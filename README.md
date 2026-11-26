@@ -2,6 +2,9 @@
 
 Course project for **Biomedical Signal Processing, Fall 2026** (Huaqiao University).
 
+**Author:** Feng Runhang (2315104007) · **Instructor:** Dr. DUAN Fang
+**Repository:** https://github.com/2287298104/MIT-BIH-Beat-Classification
+
 A complete, reproducible ECG signal-processing pipeline on the **MIT-BIH Arrhythmia
 Database**: Pan-Tompkins R-peak detection → beat segmentation → 40 hand-crafted
 features → classical classifiers, evaluated with the **inter-patient DS1/DS2
