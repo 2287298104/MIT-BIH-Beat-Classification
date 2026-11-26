@@ -76,6 +76,10 @@ def main() -> None:
     # accepts three, and the README uses three, so normalise before parsing.
     src = re.sub(r"(?m)^ {3}([*+-] |\d+\. )", r"    \1", src)
 
+    # the pointer to the Chinese mirror is useful in the repository only; the
+    # submitted code documentation is English throughout, so drop that line here
+    src = "\n".join(l for l in src.splitlines() if "README_zh.md" not in l)
+
     html_body = markdown.markdown(
         src,
         extensions=["tables", "fenced_code", "sane_lists", "attr_list"],
